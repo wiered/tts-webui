@@ -6,7 +6,7 @@ from pydub import AudioSegment
 
 
 class AudioConverter:
-    def convertPyDubToMixer(self, sound_fp: io.BytesIO, speed_factor: float):
+    def convertBytesIOToSound(self, sound_fp: io.BytesIO, speed_factor: float):
         """_summary_
 
         Args:
