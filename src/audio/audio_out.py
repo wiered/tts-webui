@@ -29,16 +29,31 @@ class AudioConverter:
 
 class AudioOut():
     def __init__(self):
-        pass
+        self._device = None
+
+    @property
+    def device(self):
+        return self._device
+
+    @device.setter
+    def device(self, device: str):
+        self._device = device
 
     def initMixer(self, device: str = None):
+        print(self.device, end = " -> ")
         if device is None:
-            devices = getDevices(False)
-            if not devices:
-                raise RuntimeError("No device!")
-            device = devices[0]
-        pygame.mixer.pre_init(devicename=device)
+            if self.device is None:
+                devices = getDevices(False)
+                if not devices:
+                    raise RuntimeError("No device!")
+
+                self.device = devices[0]
+        else:
+            self.device = device
+
+        pygame.mixer.pre_init(devicename=self.device)
         pygame.mixer.init()
+        print(self.device)
 
     def stopMixer(self):
         pygame.mixer.stop()
