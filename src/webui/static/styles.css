@@ -26,7 +26,7 @@ h1, h2 {
 }
 
 /* Form Styling */
-form.ui.form, form.us.form {
+form.ui.form {
     margin-bottom: 20px;
 }
 
@@ -50,6 +50,17 @@ form .field input[type="text"], form select {
     box-sizing: border-box;
 }
 
+form select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.select {
+    width: 15% !important;
+}
+
 /* Button Styling */
 button.ui.form.button {
     background-color: #3498db;
@@ -68,22 +79,6 @@ button.ui.form.button:hover {
     background-color: #2980b9;
 }
 
-/* Select Output Device Label Styling */
-form.us.form label {
-    font-size: 16px;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-form select {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
 /* Sounds Section */
 .sounds {
     max-width: 600px;
@@ -99,7 +94,8 @@ form select {
 a.ui.play.button {
     background-color: #2ecc71;
     color: #fff;
-    padding: 5px 10px;
+    padding: 0px 10px;
+    margin-bottom: 5px;
     border-radius: 7px;
     text-decoration: none;
     font-size: 18px;
@@ -153,3 +149,5 @@ a.ui.play.button i {
         margin-top: 5px;
     }
 }
+
+.nobr { white-space: nowrap }
