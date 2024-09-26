@@ -1,6 +1,7 @@
 import os
 
 import uvicorn
+
 from webui.app import app
 
 if __name__ == "__main__":

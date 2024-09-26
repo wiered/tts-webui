@@ -4,6 +4,8 @@ import numpy as np
 import pygame
 from pydub import AudioSegment
 
+from utils.utils import getDevices
+
 
 class AudioConverter:
     def convertBytesIOToSound(self, sound_fp: io.BytesIO, speed_factor: float):
@@ -29,7 +31,13 @@ class AudioOut():
     def __init__(self):
         pass
 
-    def initMixer(self):
+    def initMixer(self, device: str = None):
+        if device is None:
+            devices = getDevices(False)
+            if not devices:
+                raise RuntimeError("No device!")
+            device = devices[0]
+        pygame.mixer.pre_init(devicename=device)
         pygame.mixer.init()
 
     def stopMixer(self):
@@ -38,7 +46,7 @@ class AudioOut():
         pygame.mixer.quit()
 
     def playSoundFromFile(self, filename):
-        sound = pygame.mixer.Sound(filename)
+        sound = pygame.mixer.Sound("sounds/" + filename)
         sound.play()
 
         while pygame.mixer.get_busy():
