@@ -66,6 +66,7 @@ form .field textarea[type="text"] {
   max-width: 100%;
   min-width:  100%;
   min-height: 70px;
+  max-height: 900px;
 }
 
 form select {
@@ -108,29 +109,93 @@ button.ui.form.button:hover {
   color: #34495e;
 }
 
-/* Play Button Styling */
-a.ui.play.button {
+.ui.saved.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: #2ecc71;
-  color: #fff;
-  padding: 0px 10px;
+  padding: 0px;
   margin-bottom: 5px;
   border-radius: 7px;
   text-decoration: none;
   font-size: 18px;
   margin-right: 10px;
+}
+
+/* Play Button Styling */
+.ui.play.button{
+  margin: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 0px 10px 0px 10px;
+  margin-bottom: 0px;
+  border-radius: 7px 0px 0px 7px;
+  text-decoration: none;
+  font-size: 18px;
   display: inline-block;
   transition: background-color 0.3s ease;
 }
 
-a.ui.play.button:hover {
+.ui.play.button:hover {
   background-color: #27ae60;
 }
 
 /* Icon Styling */
-a.ui.play.button i {
+.ui.play.button i {
   margin: 0;
   font-size: 16px;
   vertical-align: middle;
+  cursor: pointer;
+}
+
+.ui.play.button p {
+  cursor: pointer;
+}
+
+/* Delete Button */
+
+.ui.delete.button {
+  margin: 0px;
+  display: inline-flex;               /* Use flexbox to center the icon */
+  align-items: center;                /* Center items vertically */
+  justify-content: center;            /* Center items horizontally */
+  background-color: #ff4d4d;         /* Red background for the delete button */
+  color: white;                       /* White color for the icon */
+  border: none;                       /* Remove default border */
+  padding: 3px;                     /* Add padding around the button */
+  border-radius: 0px 7px 7px 0px;                /* Slightly rounded corners */
+  font-size: 20px;                   /* Font size for the icon */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  text-decoration: none;              /* Remove default link styling */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  width: 20px;                       /* Fixed width for button */
+  height: 35px;                      /* Fixed height for button */
+}
+
+/* Change background color on hover */
+.ui.delete.button:hover {
+  background-color: #e60000;         /* Darker red on hover */
+}
+
+/* Icon styles */
+.ui.delete.button i {
+  cursor: pointer;
+  font-size: 16px;                   /* Adjust size of the FontAwesome icon */
+  margin: 0;                         /* Remove default margin */
+}
+
+/* Optional: Adding a slight shadow to make the button stand out */
+.ui.delete.button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Active state for the button */
+.ui.delete.button:active {
+  transform: scale(0.95);            /* Scale down on click for effect */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Reduce shadow */
 }
 
 /* Sound Title Styling */

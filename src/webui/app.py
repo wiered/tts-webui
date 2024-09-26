@@ -5,9 +5,14 @@ from starlette.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
-from audio import TTSGen, AudioOut
-from db import *
-from utils import getDevices
+try:
+    from audio import TTSGen, AudioOut
+    from db import *
+    from utils import getDevices
+except:
+    from src.audio import TTSGen, AudioOut
+    from src.db import *
+    from src.utils import getDevices
 
 app = FastAPI()
 tts_gen = TTSGen("ru")
@@ -46,7 +51,6 @@ async def add_sound(request: Request, text: str = Form(...), filename: str = For
 
     save_sounds_to_file(sounds)
 
-
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
 @app.post("/play")
@@ -71,6 +75,18 @@ async def play_file(request: Request, sound_filename: str):
     await asyncio.to_thread(audio_out.playSoundFromFile, sound_filename)
 
     url = app.url_path_for("root")
+    return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
+
+@app.post("/delete")
+async def delete_sound(request: Request, filename: str):
+    url = app.url_path_for("root")
+
+    if filename != "":
+        for sound in sounds:
+            if sound["filename"] == filename:
+                sounds.remove(sound)
+
+    save_sounds_to_file(sounds)
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
 @app.get("/stop")
