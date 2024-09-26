@@ -1,153 +1,214 @@
 ﻿/* General Page Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  color: #333;
 }
 
 /* Heading Styling */
-h1, h2 {
-    color: #2c3e50;
-    text-align: center;
-    font-weight: 300;
-    margin-bottom: 20px;
+h1,
+h2 {
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 20px;
 }
 
 /* Settings Section */
 .settings {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Styling */
 form.ui.form {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 form .field {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 form .field label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
 
-form .field input[type="text"], form select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-top: 5px;
-    box-sizing: border-box;
+form .field input[type="text"],
+form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+form .field textarea[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  box-sizing: border-box;
+
+  resize: both;
+  overflow: auto;
+  max-width: 100%;
+  min-height: 70px;
 }
 
 form select {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .select {
-    width: 15% !important;
+  width: 15% !important;
 }
 
 /* Button Styling */
 button.ui.form.button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button.ui.form.button:hover {
-    background-color: #2980b9;
+  background-color: #2980b9;
 }
 
 /* Sounds Section */
 .sounds {
-    max-width: 600px;
-    margin: 40px auto 0;
-    text-align: center;
+  max-width: 600px;
+  margin: 40px auto 0;
+  text-align: center;
 }
 
 .sounds h2 {
-    color: #34495e;
+  color: #34495e;
 }
 
 /* Play Button Styling */
 a.ui.play.button {
-    background-color: #2ecc71;
-    color: #fff;
-    padding: 0px 10px;
-    margin-bottom: 5px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-size: 18px;
-    margin-right: 10px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 0px 10px;
+  margin-bottom: 5px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 10px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
 a.ui.play.button:hover {
-    background-color: #27ae60;
+  background-color: #27ae60;
 }
 
 /* Icon Styling */
 a.ui.play.button i {
-    margin: 0;
-    font-size: 16px;
-    vertical-align: middle;
+  margin: 0;
+  font-size: 16px;
+  vertical-align: middle;
 }
 
 /* Sound Title Styling */
 .sounds p {
-    display: inline-block;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
+  display: inline-block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
 }
 
 /* Align Sound Items */
 .sound-item {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 /* Mobile Responsiveness */
 @media screen and (max-width: 600px) {
-    .settings, .sounds {
-        padding: 15px;
-    }
+  .settings,
+  .sounds {
+    padding: 15px;
+  }
 
-    button.ui.form.button, a.ui.play.button {
-        width: 100%;
-    }
+  button.ui.form.button,
+  a.ui.play.button {
+    width: 100%;
+  }
 
-    .sound-item {
-        flex-direction: column;
-        align-items: center;
-    }
+  .sound-item {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .sounds p {
-        margin-top: 5px;
-    }
+  .sounds p {
+    margin-top: 5px;
+  }
 }
 
-.nobr { white-space: nowrap }
+
+.stop {
+    margin-top: 20px;
+    text-align: center; /* Center the button horizontally */
+}
+
+/* Stop Button Styling */
+.ui.stop.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #ff4d4d; /* Red background */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Button font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.ui.stop.button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.ui.stop.button:active {
+    background-color: #b30000; /* Even darker on click */
+    transform: translateY(0); /* Button back to its normal position */
+}
+
+.ui.stop.button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.ui.stop.button p {
+    margin: 0; /* Remove margin from the <p> */
+    font-family: 'Arial', sans-serif; /* Font family for text */
+    font-size: 16px; /* Font size for text */
+    color: inherit; /* Inherit the color from the parent */
+    display: inline; /* Keep the text inline */
+}
+

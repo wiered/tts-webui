@@ -4,6 +4,7 @@
         <title>TTS WebUI</title>
         <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
         <h1>TTS WebUI</h1>
@@ -11,16 +12,17 @@
         <div class="settings">
             <form class="ui form" action="/play" method="post">
                 <div class="field">
-                    <input type="text" name="text" placeholder="Play Text">
+                    <textarea type="text" name="text" placeholder="Сказать"></textarea>
                 </div>
-                <button class="ui form button" type="submit">Play Text</button>
+                <button class="ui form button" type="submit">Сказать</button>
             </form>
 
             <form class="ui form" action="/add" method="post">
                 <div class="field">
-                    <input type="text" name="text" placeholder="Add text"><br>
+                    <input type="text" name="text" placeholder="Текст">
+                    <input type="text" name="filename" placeholder="Имя файла">
                 </div>
-                <button class="ui form button" type="submit">Add text</button>
+                <button class="ui form button" type="submit">Сохранить</button>
             </form>
 
             <form class="us form" action="/select" method="post" id="device">
@@ -41,6 +43,12 @@
                 <i class="fas fa-play"></i> <p>{{ sound.get("text") }}</p>
             </a>
             {% endfor %}
+        </div>
+
+        <div class="stop">
+            <a class="ui stop button" href="/stop">
+                <i class="fas fa-pause"></i> <p>СТОП</p>
+            </a>
         </div>
     </body>
 </html>

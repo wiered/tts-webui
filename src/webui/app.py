@@ -27,14 +27,20 @@ async def root(request: Request):
                                        })
 
 @app.post("/add")
-async def add_sound(request: Request, text: str = Form(...)):
-    if text != "":
-        sound = tts_gen.generateFileFromText(text)
-        sounds.append({"filename": sound, "text": text})
+async def add_sound(request: Request, text: str = Form(...), filename: str = Form(...)):
+    url = app.url_path_for("root")
+
+    if text == "":
+        return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
+
+    if filename == "":
+        filename = tts_gen.generateFileFromText(text)
+
+    sounds.append({"filename": filename, "text": text})
 
     save_sounds_to_file(sounds)
 
-    url = app.url_path_for("root")
+
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
 @app.post("/play")
@@ -57,6 +63,14 @@ async def select_device(request: Request, device: str = Form(...)):
 @app.get("/play/{sound_filename}")
 async def play_file(request: Request, sound_filename: str):
     await asyncio.to_thread(audio_out.playSoundFromFile, sound_filename)
+
+    url = app.url_path_for("root")
+    return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
+
+@app.get("/stop")
+async def stop(request: Request):
+    audio_out.stopMixer()
+    audio_out.initMixer()
 
     url = app.url_path_for("root")
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
