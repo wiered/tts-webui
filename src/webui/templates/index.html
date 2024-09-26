@@ -20,7 +20,7 @@
             <form class="ui form" action="/add" method="post">
                 <div class="field">
                     <input type="text" name="text" placeholder="Текст">
-                    <input type="text" name="filename" placeholder="Имя файла">
+                    <input type="text" name="filename" placeholder="Имя файла (Необязательно)">
                 </div>
                 <button class="ui form button" type="submit">Сохранить</button>
             </form>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="sounds">
-            <h2>Sounds</h2>
+            <h2>Сохранённеые цитаты</h2>
             {% for sound in sounds %}
             <a class="ui play button" href="/play/{{ sound.get('filename') }}">
                 <i class="fas fa-play"></i> <p>{{ sound.get("text") }}</p>
