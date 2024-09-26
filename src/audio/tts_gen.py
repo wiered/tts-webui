@@ -19,8 +19,8 @@ class TTSGen():
 
     def generateFileFromText(self, text):
         salt = utils.generateSalt()
-        filename = f"sounds/{salt}tts.mp3"
+        filename = f"{salt}tts.mp3"
         gTTSobj = gTTS(text=text, lang=self.language, slow=False)
-        gTTSobj.save(filename)
+        gTTSobj.save("sounds/" + filename)
 
         return filename
