@@ -1,5 +1,6 @@
 ﻿import asyncio
 from fastapi import FastAPI, Request, Form, status
+from fastapi.responses import FileResponse
 from starlette.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -15,8 +16,13 @@ audio_out.initMixer()
 
 templates = Jinja2Templates(directory="./src/webui/templates")
 app.mount("/static", StaticFiles(directory="./src/webui/static"), name="static")
+favicon_path = './src/webui/favicon.ico'
 
 sounds = load_sounds_from_file()
+
+@app.get('/favicon.ico', include_in_schema=False)
+async def favicon():
+    return FileResponse(favicon_path)
 
 @app.get("/")
 async def root(request: Request):
