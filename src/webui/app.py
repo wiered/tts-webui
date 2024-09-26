@@ -32,6 +32,15 @@ def add_sound(request: Request, text: str = Form(...)):
     url = app.url_path_for("root")
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
+@app.post("/play")
+def play_sound(request: Request, text: str = Form(...)):
+    print("Play: " + text)
+    sound = tts_gen.generateFromText(text)
+    audio_out.playSound(sound)
+
+    url = app.url_path_for("root")
+    return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
+
 @app.post("/select")
 def select_device(request: Request, device: str = Form(...)):
     audio_out.stopMixer()

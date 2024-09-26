@@ -54,7 +54,7 @@ class AudioOut():
 
     def playSound(self, sound_fp):
         converter = AudioConverter()
-        sound = converter.convertPyDubToMixer(sound_fp, 0.9)
+        sound = converter.convertBytesIOToSound(sound_fp, 0.9)
         sound.play()
 
         while pygame.mixer.get_busy():
