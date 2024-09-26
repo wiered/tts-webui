@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from audio import TTSGen, AudioOut
+from db import *
 from utils import getDevices
 
 app = FastAPI()
@@ -15,7 +16,7 @@ audio_out.initMixer()
 templates = Jinja2Templates(directory="./src/webui/templates")
 app.mount("/static", StaticFiles(directory="./src/webui/static"), name="static")
 
-sounds = []
+sounds = load_sounds_from_file()
 
 @app.get("/")
 async def root(request: Request):
@@ -30,6 +31,8 @@ async def add_sound(request: Request, text: str = Form(...)):
     if text != "":
         sound = tts_gen.generateFileFromText(text)
         sounds.append({"filename": sound, "text": text})
+
+    save_sounds_to_file(sounds)
 
     url = app.url_path_for("root")
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
