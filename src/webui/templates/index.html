@@ -1,9 +1,48 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>WebUI</title>
+        <title>TTS WebUI</title>
+        <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
-        <h1>WebUI</h1>
+        <h1>TTS WebUI</h1>
+
+        <div class="settings">
+            <form class="ui form" action="/play" method="post">
+                <div class="field">
+                    <label>Play</label>
+                    <input type="text" name="text" placeholder="Enter Text..."><br>
+                </div>
+                <button class="ui form button" type="submit">Add</button>
+            </form>
+
+            <form class="ui form" action="/add" method="post">
+                <div class="field">
+                    <label>TTS Text</label>
+                    <input type="text" name="text" placeholder="Enter Text..."><br>
+                </div>
+                <button class="ui form button" type="submit">Add</button>
+            </form>
+
+            <form class="us form" action="/select" method="post" id="device">
+                <label for="device">Select output device:</label>
+                <select name="device" id="device">
+                    {% for device in devices %}
+                    <option value="{{ device }}" form="device">{{ device }}</option>
+                    {% endfor %}
+                </select>
+                <button class="ui form button" type="submit">Select</button>
+            </form>
+        </div>
+
+        <div class="sounds">
+            <h2>Sounds</h2>
+            {% for sound in sounds %}
+            <a class="ui play button" href="/play/{{ sound.get('filename') }}">
+                <i class="fas fa-play"></i> <p>{{ sound.get("text") }}</p>
+            </a>
+            {% endfor %}
+        </div>
     </body>
 </html>
